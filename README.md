@@ -14,10 +14,10 @@
 
  ### 在终端中:
 
- ![img](image\image-K7VBva.png)
+ ![img](image/image-K7VBva.png)
 
  ### 运行`rename_tool`：
- ![img](image\image-6vO7Wa.png)
+ ![img](image/image-6vO7Wa.png)
 
  > #### 注意:在实际使用中, 可能未编译, 使用`python mrliu_tools.py`即可
 
