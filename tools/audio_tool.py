@@ -1,4 +1,9 @@
-import socket, pyaudio, queue, threading
+try:
+    import socket, pyaudio, queue, threading
+except:
+    import tools.pkg_installer as pkg_installer
+    pkg_installer.required = ["pyaudio"]
+    pkg_installer.check()
 
 
 __version__ = "1.1.0"
@@ -25,7 +30,7 @@ def audio_send(receiver_ip, port, rate, channels, chunk, FORMAT = pyaudio.paInt1
         udp_socket.close()
 
 
-def audio_recv(port, rate, channels, chunk, MAXSIZE=500, FORMAT=pyaudio.paInt16):
+def audio_recv(port, rate, channels, chunk, MAXSIZE=25, FORMAT=pyaudio.paInt16):
     p = pyaudio.PyAudio()
     stream = p.open(format=FORMAT, channels=channels, rate=rate, output=True, frames_per_buffer=chunk*2)
 

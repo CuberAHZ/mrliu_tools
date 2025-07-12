@@ -6,8 +6,7 @@ def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 required = [
-    "click",
-    "pyaudio"
+    # some pkg...
 ]
 
 def check():

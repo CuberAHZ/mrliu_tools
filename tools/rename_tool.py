@@ -1,6 +1,5 @@
-import re, os, sys, click, json, hashlib
+import re, os, json, hashlib, click
 from datetime import datetime
-
 
 __really_rename__ = False
 __version__ = "1.0.7"
@@ -75,7 +74,6 @@ def rename(files_list, path, to):
 
         click.secho("ok", fg="green")
     click.secho("[Information]Rename completed successfully.", fg="green")
-    print(path)
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mrliu_tools.json"), "r") as f:
         js = json.load(f)
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mrliu_tools.json"), "w") as f:

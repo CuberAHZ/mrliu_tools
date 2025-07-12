@@ -19,10 +19,10 @@ icon_command = {
     ],
     "text_lines" :[
         " __  __        _      _            ______            __    ",
-        "|  \/  | _ __ | |    (_) _   _    /_  __/___  ____  / /____",
-        "| |\/| || '__|| |    | || | | |    / / / __ \/ __ \/ / ___/",
+        "|  \\/  | _ __ | |    (_) _   _    /_  __/___  ____  / /____",
+        "| |\\/| || '__|| |    | || | | |    / / / __ \\/ __ \\/ / ___/",
         "| |  | || |   | |___ | || |_| |   / / / /_/ / /_/ / (__  )",
-        "|_|  |_||_|   |_____||_| \__,_|  /_/  \____/\____/_/____/ "
+        "|_|  |_||_|   |_____||_| \\__,_|  /_/  \\____/\\____/_/____/ "
     ]
 }
 
@@ -30,46 +30,39 @@ icon_command = {
 help_text = {
     "zh": {
         "rename": {
-            "description": "批量重命名文件",
+            "description": "批量重命名文件.",
             "options": {
-                "-p": "需要批量重命名的文件所在路径",
-                "-pt": "匹配文件的正则表达式",
-                "-t": "批量重命名的格式",
-                "-wd": "同时重命名目录",
-                "-od": "仅重命名目录(不重命名文件)",
-                "-r": "恢复上一次的重命名操作",
-                "--more-help": "获取更多帮助"
+                "-p": "需要批量重命名的文件所在路径.",
+                "-pt": "匹配文件的正则表达式.",
+                "-t": "批量重命名的格式.",
+                "-wd": "同时重命名目录.",
+                "-od": "仅重命名目录(不重命名文件).",
+                "-r": "恢复上一次的重命名操作.",
+                "--more-help": "获取更多帮助."
             }
         },
-        "audio_send": {
-            "description": "将本机声音通过网络实时发送到另一台电脑",
+        "audio": {
+            "description": "转发并接收音频.",
             "options": {
-                "receiver_ip": "接收方的IP地址",
-                "--port": "目标端口",
-                "--rate": "采样率",
-                "--channels": "声道数",
-                "--chunk": "每帧采样点数"
-            }
-        },
-        "audio_recv": {
-            "description": "接收网络音频并播放(适用于已连接蓝牙音箱的电脑)",
-            "options": {
-                "--port": "监听端口",
-                "--rate": "采样率",
-                "--channels": "声道数",
-                "--chunk": "每帧采样点数"
+                "--ip": "接收方的IP地址.",
+                "--port": "目标端口.",
+                "--rate": "采样率.",
+                "--channels": "声道数.",
+                "--chunk": "每帧采样点数.",
+                "--send": "发送声音.",
+                "--recv": "接收声音."
             }
         },
         "set_language": {
-            "description": "设置命令行工具的语言(en/zh)",
+            "description": "设置命令行工具的语言(en/zh).",
             "options": {
-                "lang": "语言(en/zh)"
+                "lang": "语言(en/zh)."
             }
         }
     },
     "en": {
         "rename": {
-            "description": "Batch rename files",
+            "description": "Batch rename files.",
             "options": {
                 "-p": "The path where batch renaming is needed.",
                 "-pt": "Regular expressions to match files.",
@@ -81,28 +74,21 @@ help_text = {
             }
         },
         "audio_send": {
-            "description": "Stream local audio to another computer over the network",
+            "description": "Stream local audio and receive, play network audio.",
             "options": {
-                "receiver_ip": "IP address of the receiver",
-                "--port": "Target port",
-                "--rate": "Sample rate",
-                "--channels": "Number of channels",
-                "--chunk": "Number of samples per frame"
-            }
-        },
-        "audio_recv": {
-            "description": "Receive and play network audio (suitable for computers connected to Bluetooth speakers)",
-            "options": {
-                "--port": "Listening port",
-                "--rate": "Sample rate",
-                "--channels": "Number of channels",
-                "--chunk": "Number of samples per frame"
+                "--ip": "IP address of the receiver.",
+                "--port": "Target port.",
+                "--rate": "Sample rate.",
+                "--channels": "Number of channels.",
+                "--chunk": "Number of samples per frame.",
+                "--send": "stream local audio.",
+                "--recv": "receive and play network audio."
             }
         },
         "set_language": {
-            "description": "Set the language of the command line tool (en/zh)",
+            "description": "Set the language of the command line tool (en/zh).",
             "options": {
-                "lang": "Language (en/zh)"
+                "lang": "Language (en/zh)."
             }
         }
     }
