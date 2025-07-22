@@ -2,7 +2,7 @@ import re, os, json, hashlib, click
 from datetime import datetime
 
 __really_rename__ = False
-__version__ = "1.0.7"
+__version__ = "1.0.8"
 __file__ = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "rename_tool.py")
 
 
@@ -17,12 +17,15 @@ def restore(path):
             click.secho(i, nl=False)
             click.secho(" -> ", fg="blue", nl=False)
             click.secho(remember[path][i] + " ... ", nl=False)
-            if __really_rename__:
-                old_name = os.path.join(path, i)
-                new_name = os.path.join(path, remember[path][i])
-                os.rename(new_name, old_name)
+            try:
+                if __really_rename__:
+                    old_name = os.path.join(path, i)
+                    new_name = os.path.join(path, remember[path][i])
+                    os.rename(old_name, new_name,)
 
-            click.secho("ok", fg="green")
+                click.secho("ok", fg="green")
+            except:
+                click.secho("error", fg="red")
         click.secho("[Information]Restore completed successfully.", fg="green")
         with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mrliu_tools.json"), "w") as f:
             del js["rename"][path]
@@ -66,13 +69,15 @@ def rename(files_list, path, to):
         click.secho(" -> ", fg="blue", nl=False)
         click.secho(new_name + " ... ", nl=False)
         remember[new_name] = i
+        try:
+            if __really_rename__:
+                new_name = os.path.join(path, new_name)
+                old_name = os.path.join(path, i)
+                os.rename(old_name, new_name)
 
-        if __really_rename__:
-            new_name = os.path.join(path, new_name)
-            old_name = os.path.join(path, i)
-            os.rename(old_name, new_name)
-
-        click.secho("ok", fg="green")
+            click.secho("ok", fg="green")
+        except:
+            click.secho("error", fg="red")
     click.secho("[Information]Rename completed successfully.", fg="green")
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mrliu_tools.json"), "r") as f:
         js = json.load(f)

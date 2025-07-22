@@ -13,7 +13,7 @@ except:
     exit()
 
 
-__version__ = "1.3.1"
+__version__ = "1.3.2"
 
 
 tools_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tools")
@@ -43,12 +43,14 @@ def display_welcome_message():
         click.secho("Use 'mrliu_tools audio --help' for more information on the audio tool.", fg="cyan")
         click.secho("Use 'mrliu_tools set-language zh/en' to change the language of help.", fg="cyan")
         click.secho("Use 'mrliu_tools --help' for more information on other tools.", fg="cyan")
+        click.secho()
     else:
         click.secho(" - 实用的命令行工具.", fg="cyan")
         click.secho("输入 'mrliu_tools rename --help' 获取更多关于rename工具的信息.", fg="cyan")
         click.secho("输入 'mrliu_tools audio --help' 获取更多关于audio工具的信息.", fg="cyan")
         click.secho("输入 'mrliu_tools set-language zh/en' 更改帮助语言.", fg="cyan")
         click.secho("输入 'mrliu_tools --help' 获取更多关于其他工具的信息.", fg="cyan")
+        click.secho()
 
 
 def extract_version(file_path):
