@@ -73,7 +73,7 @@ help_text = {
                 "--more-help": "Get more help."
             }
         },
-        "audio_send": {
+        "audio": {
             "description": "Stream local audio and receive, play network audio.",
             "options": {
                 "--ip": "IP address of the receiver.",
