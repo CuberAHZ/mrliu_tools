@@ -1,7 +1,7 @@
 try:
     import socket, pyaudio, queue, threading
 except:
-    import tools.pkg_installer as pkg_installer
+    import src.tools.pkg_installer as pkg_installer
     pkg_installer.required = ["pyaudio"]
     pkg_installer.check()
 
