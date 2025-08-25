@@ -7,7 +7,7 @@
   },
   {
    "optionDest": "filenames",
-   "value": "D:/Python/mrliu_tools/mrliu_tools.py"
+   "value": "D:/Python/mrliu_tools/src/mrliu_tools.py"
   },
   {
    "optionDest": "onefile",
@@ -19,7 +19,7 @@
   },
   {
    "optionDest": "icon_file",
-   "value": "E:/files/ico/mrliu_icon.ico"
+   "value": "D:/Python/mrliu_tools/icon/mrliu_icon.ico"
   },
   {
    "optionDest": "clean_build",
@@ -52,10 +52,14 @@
   {
    "optionDest": "bootloader_ignore_signals",
    "value": false
+  },
+  {
+   "optionDest": "datas",
+   "value": "D:/Python/mrliu_tools/src/mrliu_tools.json;."
   }
  ],
  "nonPyinstallerOptions": {
   "increaseRecursionLimit": true,
-  "manualArguments": "-p D:\\Python\\mrliu_tools"
+  "manualArguments": "-p D:/Python/mrliu_tools/src"
  }
 }
