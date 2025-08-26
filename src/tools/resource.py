@@ -8,7 +8,7 @@ try:
         lang = js["language"]
 except Exception as e:
     click.secho(f"Error loading configuration: {e}", fg="red")
-    lang = "en"  # Default to English if there's an error
+    lang = "en"
 
 
 icon_command = {
@@ -56,7 +56,7 @@ help_text = {
         "set_language": {
             "description": "设置命令行工具的语言(en/zh).",
             "options": {
-                "lang": "语言(en/zh)."
+                "language": "语言(en/zh)."
             }
         }
     },
@@ -88,7 +88,7 @@ help_text = {
         "set_language": {
             "description": "Set the language of the command line tool (en/zh).",
             "options": {
-                "lang": "Language (en/zh)."
+                "language": "Language (en/zh)."
             }
         }
     }
@@ -121,8 +121,8 @@ more_help = {
 }
 
 
-def help_(command, lang="en"):
-    if lang == "zh" :
+def help_(command, language="en"):
+    if language == "zh" :
         return help_text["zh"][command]
     else:
         return help_text["en"][command]

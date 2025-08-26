@@ -1,16 +1,19 @@
 try:
-    import json, os, re, click
-    from tools import resource
-    from tools.resource import help_
-except:
+    __import__("click")
+except ImportError:
     import tools.pkg_installer as pkg_installer
     pkg_installer.required = ["click"]
     pkg_installer.check()
 
     import click
     click.secho("Successfully install!")
-    click.secho("Use 'mrliu_tools' for help", fg="cyan")
+    click.secho("Use 'mrliu_tools' for help.", fg="cyan")
     exit()
+
+import json, os, re, click
+
+from tools import resource
+from tools.resource import help_
 
 
 __version__ = "1.3.2"
@@ -18,7 +21,8 @@ __version__ = "1.3.2"
 
 tools_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "tools")
 lang = resource.lang
-(rn, ad, sl) = (help_("rename", lang)["options"], help_("audio", lang)["options"], help_("set_language", lang)["options"])
+(rn, ad, sl) = (help_("rename", lang)["options"], help_("audio", lang)["options"],
+                help_("set_language", lang)["options"])
 
 
 @click.group(invoke_without_command=True)
@@ -31,11 +35,11 @@ def cli(ctx):
 
 def display_welcome_message():
     for i in resource.icon_command["text_lines"]:
-        charIndex = 0
+        char_index = 0
         for char in i:
-            colorIndex = (charIndex // 2) % len(resource.icon_command["colors"])
-            click.secho(char, fg=resource.icon_command["colors"][colorIndex], nl=False)
-            charIndex += 1
+            color_index = (char_index // 2) % len(resource.icon_command["colors"])
+            click.secho(char, fg=resource.icon_command["colors"][color_index], nl=False)
+            char_index += 1
         click.secho("")
     if lang == "en":
         click.secho(" - A collection of useful command line tools.", fg="cyan")
@@ -84,13 +88,15 @@ def rename(path, pattern, to, with_dir, only_dir, restore, more_help):
         return
 
     if with_dir and only_dir:
-        click.echo("[Warning]You cannot choose '--with-dir' and '--only-dir' at the same time", fg="yellow")
+        click.secho("[Warning]You cannot choose '--with-dir' and '--only-dir' at the same time.", fg="yellow")
         return
+
     try:
         files_list = os.listdir(path)
-    except:
-        click.secho("[Error]dir name is not valid", fg="red")
+    except FileNotFoundError or NotADirectoryError:
+        click.secho("[Error]dir name is not valid.", fg="red")
         return
+
     if not files_list:
         click.secho("[Error]No files found in the specified directory.", fg="red")
         return
@@ -124,19 +130,19 @@ def rename(path, pattern, to, with_dir, only_dir, restore, more_help):
 def audio(ip, port, rate, channels, chunk, send, recv):
     from tools import audio_tool
     if send: audio_tool.audio_send(ip, port, rate, channels, chunk)
-    if recv: audio_tool.audio_recv(port, rate, channels, chunk)
+    elif recv: audio_tool.audio_recv(port, rate, channels, chunk)
 
 
 @cli.command(help=help_("set_language", lang)["description"])
-@click.argument("lang", type=click.Choice(["en", "zh"], case_sensitive=False))
-def set_language(lang):
+@click.argument("language", type=click.Choice(["en", "zh"], case_sensitive=False))
+def set_language(language):
     """设置命令行工具的语言(en/zh)"""
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mrliu_tools.json"), "r") as f:
         js = json.load(f)
-    js["language"] = lang
+    js["language"] = language
     with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mrliu_tools.json"), "w") as f:
         json.dump(js, f, indent=4)
-    click.secho(f"Language set to {lang}", fg="green")
+    click.secho(f"Language set to {language}", fg="green")
 
 
 if __name__ == "__main__":

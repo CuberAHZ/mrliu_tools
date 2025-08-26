@@ -1,9 +1,14 @@
 try:
-    import socket, pyaudio, queue, threading
-except:
-    import tools.pkg_installer as pkg_installer
+    __import__("pyaudio")
+except ImportError:
+    try:
+        import tools.pkg_installer as pkg_installer
+    except ImportError:
+        import pkg_installer
     pkg_installer.required = ["pyaudio"]
     pkg_installer.check()
+
+import socket, queue, threading, pyaudio
 
 
 __version__ = "1.1.0"
